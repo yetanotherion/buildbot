@@ -80,8 +80,7 @@ def upgrade(migrate_engine):
                   _incompatible_object_state(metadata, migrate_engine),
                   _incompatible_users(metadata, migrate_engine)], [])
     if errors:
-        errors = ['Cannot upgrade due to invalid data:'] + errors
-        raise ValueError("\n".join(errors))
+        raise ValueError("\n".join([""] + errors))
     if migrate_engine.dialect.name == 'postgresql':
         # Sql alchemy migrate does not apply changes on postgresql
         def reduce_table_column_length(table, column):
