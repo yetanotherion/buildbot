@@ -131,7 +131,11 @@ def upgradeMaster(config, _noMonkey=False):
         return
 
     upgradeFiles(config)
-    yield upgradeDatabase(config, master_cfg)
+    try:
+        yield upgradeDatabase(config, master_cfg)
+    except Exception as e:
+        print ("Got error: {}".format(e))
+        return
 
     if not config['quiet']:
         print("upgrade complete")
