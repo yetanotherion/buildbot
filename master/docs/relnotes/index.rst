@@ -23,6 +23,7 @@ Features
 * :class:`GitPoller` now has a ``buildPushesWithNoCommits`` option to allow the rebuild of already known commits on new branches.
 * Add GitLab authentication plugin for web UI. See :class:`buildbot.www.oauth2.GitLabAuth`.
 * :class:`DockerLatentWorker` now has a ``hostconfig`` parameter that can be used to setup host configuration when creating a new container.
+* MySQL InnoDB tables are now supported.
 
 Fixes
 ~~~~~
@@ -35,6 +36,7 @@ Deprecations, Removals, and Non-Compatible Changes
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 * Deprecated ``workdir`` was removed, ``builddir`` property should be used instead.
+* To support MySQL InnoDB, the size of six VARCHAR(256) columns ``changes.(author, branch, category, name); object_state.name; user.identifier`` was reduced to VARCHAR(255).
 
 Changes for Developers
 ~~~~~~~~~~~~~~~~~~~~~~
